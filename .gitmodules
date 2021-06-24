@@ -1,0 +1,6 @@
+[submodule "third_party/the-nuclei-templates"]
+	path = third_party/the-nuclei-templates
+	url = https://github.com/geeknik/the-nuclei-templates.git
+[submodule "third_party/panch0r3d_nuclei-templates"]
+	path = third_party/panch0r3d_nuclei-templates
+	url = https://github.com/panch0r3d/nuclei-templates.git
