@@ -1,0 +1,23 @@
+id: git-head
+
+info:
+  name: Git Head Disclosure
+  author: bennettwarner
+  severity: medium
+  description: Searches for the pattern /.git/HEAD on passed URLs.
+  tags: config,git,exposure
+
+requests:
+  - method: GET
+    path:
+      - "{{BaseURL}}/.git/HEAD"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - "ref"
+
+      - type: dsl
+        dsl:
+          - 'contains(tolower(body), "<html") == false && contains(tolower(body), "</body>") == false'

@@ -1,0 +1,19 @@
+id: readme-md
+
+info:
+  name: Readme.MD Disclosure
+  author: bennettwarner
+  severity: high
+  description: Searches for the pattern /.env on passed URLs.
+  tags: config,readme,exposure
+
+requests:
+  - method: GET
+    path:
+      - "{{BaseURL}}/readme.MD"
+
+    matchers-condition: and
+    matchers:
+      - type: dsl
+        dsl:
+          - 'contains(tolower(body), "<html") == false && contains(tolower(body), "</body>") == false'

@@ -1,0 +1,19 @@
+id: git-ignore
+
+info:
+  name: .gitignore Disclosure
+  author: bennettwarner
+  severity: low
+  description: Searches for the pattern /.gitignore on passed URLs.
+  tags: config,git,exposure
+
+requests:
+  - method: GET
+    path:
+      - "{{BaseURL}}/.gitignore"
+
+    matchers-condition: and
+    matchers:
+      - type: dsl
+        dsl:
+          - 'contains(tolower(body), "<html") == false && contains(tolower(body), "</body>") == false'
