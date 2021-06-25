@@ -17,7 +17,11 @@ requests:
       - type: word
         words:
           - "ref"
-
+          
       - type: dsl
         dsl:
           - 'contains(tolower(body), "<html") == false && contains(tolower(body), "</body>") == false'
+      
+      - type: status
+        status:
+          - 200
